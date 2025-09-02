@@ -18,8 +18,8 @@ public class Input<T> where T : struct
 
     protected virtual void OnDisable()
     {
-        // World.Input.OnUpdate -= UpdateInput;
-        // World.Input.OnDisableInput -= OnDisable;
+        World.Input.OnUpdate -= UpdateInput;
+        World.Input.OnDisableInput -= OnDisable;
         action.Disable();
     }
 
@@ -27,7 +27,7 @@ public class Input<T> where T : struct
     {
         action = _action;
         action.Enable();
-        // World.Input.OnUpdate += UpdateInput;
-        // World.Input.OnDisableInput += OnDisable;
+        World.Input.OnUpdate += UpdateInput;
+        World.Input.OnDisableInput += OnDisable;
     }
 }
