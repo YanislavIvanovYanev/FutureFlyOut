@@ -15,7 +15,7 @@ public static class LogUtil
     private static string ProcessFormattingAClass(int lvl, object obj)
     {
         if(lvl == 0) return obj == null ? "null" : "ref";
-        System.Type type = obj.GetType();
+        Type type = obj.GetType();
         if(visited.Contains(obj)) return $"(Circular Reference: {type.Name})"; //Prevents recursion
 
         visited.Add(obj);

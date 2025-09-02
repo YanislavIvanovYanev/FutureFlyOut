@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    public event System.Action OnDisableInput = () => {}, OnUpdate = () => {};
+    public System.Action OnDisableInput = () => {}, OnUpdate = () => {};
     public PlayerInput inputActions;
 
-    [HideInInspector] public floatInput interact, run, esc, shoot;
+    [HideInInspector] public floatInput shoot, boost;
     [HideInInspector] public VectorInput move;
 
     private void Awake() => inputActions = new();
@@ -13,10 +13,8 @@ public class InputManager : MonoBehaviour
     private void OnEnable()
     {
         shoot = new(inputActions.Player.Shoot);
-        interact = new(inputActions.Player.Interact);
-        // run = new(inputActions.Player.Run);
-        // esc = new(inputActions.Player.Esc);
-        // move = new(inputActions.Player.Move);
+        boost = new(inputActions.Player.Boost);
+        move = new(inputActions.Player.Move);
     }
     private void OnDisable() => OnDisableInput();
 

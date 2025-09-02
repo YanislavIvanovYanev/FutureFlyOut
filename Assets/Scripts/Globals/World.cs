@@ -6,4 +6,6 @@ public class World : MonoBehaviour
 
     public static World inst;
     public static InputManager Input => inst.input;
+
+    private void Awake() => inst = this;
 }
