@@ -3,7 +3,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
-    
+
+    [HideInInspector] public bool pushed;
     private bool boosting;
     private float moveSpeed = movePower;
     private const float movePower = 3f, runPower = 1.5f, turnSpeed = 4f, turnStopSpeed = turnSpeed * 1.5f, xMult = 1.5f;
@@ -21,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if(pushed)
+            return;
         var moveI = MoveI;
         bool stop = moveI.magnitude == 0f;
         if(!stop) moveI = new(moveI.x * xMult, moveI.y);
