@@ -7,12 +7,12 @@ public class BossController : MonoBehaviour
 
     [HideInInspector] public int phase = 1;
     private bool avoiding;
-    private float moveSpeed = firstPhaseMS, moveDir = 1f;
+    private float moveSpeed = firstPhaseMS, moveDir = 1f, slow;
     private const float avoidanceSensitivity = 1f, borderMax = 4f, borderMin = 3f, movePower = 2.5f, turnSpeed = 6f,
-     pushTime = .1f, pushForce = -15f, firstPhaseMS = 1f, secondPhaseMS = 2.25f, thirdPhaseMS = 3f;
+     pushTime = .1f, pushForce = -15f, firstPhaseMS = 1f, secondPhaseMS = 2.25f, thirdPhaseMS = 3f, slowOnHit = .2f;
     private Vector2 smoothedDir = Vector2.zero;
 
-    private static readonly WaitForSeconds avoidingTime = new(1f);
+    private static readonly WaitForSeconds avoidingTime = new(1f), slowTime = new(1f);
 
     private float MyY => transform.position.y;
     private float PlayerY => World.Player.transform.position.y;
@@ -28,7 +28,7 @@ public class BossController : MonoBehaviour
     {
         float moveY = movePower * moveDir;
         smoothedDir = Vector2.Lerp(smoothedDir, Vector2.up * moveY, turnSpeed * Time.fixedDeltaTime);
-        rb.linearVelocity = moveSpeed * smoothedDir;
+        rb.linearVelocity = (moveSpeed - slow) * smoothedDir;
     }
 
     private void MoveDirChange()
@@ -62,7 +62,7 @@ public class BossController : MonoBehaviour
         playerCon.pushed = true;
         col.attachedRigidbody.linearVelocity = new(pushForce, 0f);
         World.Lives.LoseLife();
-        World.BossBar.HitBoss(10f);
+        World.BossBar.DamageBoss(10f);
         StartCoroutine(PushPlayerBack(playerCon));
     }
 
@@ -77,5 +77,18 @@ public class BossController : MonoBehaviour
         LogUtil.Log($"Switching to {(third ? "third" : "second")} phase");
         phase = third ? 3 : 2;
         moveSpeed = third ? thirdPhaseMS : secondPhaseMS;
+    }
+
+    public void HitBoss(float amount)
+    {
+        World.BossBar.DamageBoss(amount);
+        slow += slowOnHit;
+        StartCoroutine(RemoveSlow());
+    }
+
+    private IEnumerator RemoveSlow()
+    {
+        yield return slowTime;
+        slow -= slowOnHit;
     }
 }

@@ -18,17 +18,17 @@ public class BossBar : MonoBehaviour
         InvokeRepeating(nameof(UpdateNumber), 0f, 1f);
     }
 
-    private void PassiveDamage() => Damage(passiveDmg);
+    private void PassiveDamage() => TakeDamage(passiveDmg);
 
-    private void Damage(float amount)
+    private void TakeDamage(float amount)
     {
         hp -= amount;
         bar.value = hp / maxHp;
     }
 
-    public void HitBoss(float amount)
+    public void DamageBoss(float amount)
     {
-        Damage(amount);
+        TakeDamage(amount);
         UpdateNumber();
         if(hp <= 0f) SceneManager.LoadScene("Battle");
         else if(World.Boss.phase == 2 && hp <= thirdPhaseStart) World.Boss.SwitchPhase(true);

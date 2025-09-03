@@ -18,6 +18,4 @@ public class PotionController : MonoBehaviour
         image.sprite = emptyPotion;
         charges--;
     }
-
-
 }
