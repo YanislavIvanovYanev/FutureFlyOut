@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     {
         World.Input.shoot.OnDown += Shoot;
         World.Input.boost.OnDown += Boost;
+        World.Boss.StartBoss();
     }
 
     private void FixedUpdate()
