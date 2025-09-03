@@ -7,7 +7,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public bool pushed;
     private bool boosting;
     private float moveSpeed = movePower;
-    private const float movePower = 3f, runPower = 1.5f, turnSpeed = 4f, turnStopSpeed = turnSpeed * 1.5f, xMult = 1.5f;
+    private const float movePower = 3.3f, boostPower = 1.5f, turnSpeed = 4.5f, turnStopSpeed = turnSpeed * 1.5f, xMult = 1.5f;
     private Vector2 smoothedDir = Vector2.zero;
     private Vector2 MoveI => World.Input.move.Normalized;
 
@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     private void Boost(bool value)
     {
         boosting = value;
-        moveSpeed = boosting ? movePower * runPower : movePower;
+        moveSpeed = boosting ? movePower * boostPower : movePower;
     }
 #endregion
 }

@@ -18,7 +18,7 @@ public class LivesController : MonoBehaviour
         if(!hearts.TrueForAll(h => !h.isFull))
             return;
         //game over
-        SceneManager.LoadScene("Battle1");
+        SceneManager.LoadScene("Battle");
     }
 
     public void RegainAllLives(){ for(int i = 0; i < hearts.Count; i++) if(!hearts[i].isFull) hearts[i].SetHeart(true); }

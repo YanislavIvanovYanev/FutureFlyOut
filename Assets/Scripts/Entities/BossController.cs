@@ -5,10 +5,14 @@ public class BossController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D rb;
 
+    [HideInInspector] public int phase = 1;
+    private bool avoiding;
     private float moveSpeed = firstPhaseMS, moveDir = 1f;
-    private const float avoidanceSensitivity = 1f, borderMax = 4f, borderMin = 3f, movePower = 2f, turnSpeed = 6f,
-     pushTime = .1f, pushForce = -15f, firstPhaseMS = 1f, secondPhaseMS = 2.5f, thirdPhaseMS = 4f;
+    private const float avoidanceSensitivity = 1f, borderMax = 4f, borderMin = 3f, movePower = 2.5f, turnSpeed = 6f,
+     pushTime = .1f, pushForce = -15f, firstPhaseMS = 1f, secondPhaseMS = 2.25f, thirdPhaseMS = 3f;
     private Vector2 smoothedDir = Vector2.zero;
+
+    private static readonly WaitForSeconds avoidingTime = new(1f);
 
     private float MyY => transform.position.y;
     private float PlayerY => World.Player.transform.position.y;
@@ -33,10 +37,21 @@ public class BossController : MonoBehaviour
         float absMyY = Mathf.Abs(myY);
         float diff = myY - PlayerY;
         if(absMyY > borderMax) moveDir = myY < 0 ? 1f : -1f;
-        if(absMyY > borderMin || Mathf.Abs(diff) < avoidanceSensitivity)
+        if(absMyY > borderMin || avoiding)
             return;
-        //if(Mathf.Abs(diff) < avoidanceSensitivity) moveDir = diff < 0 ? -1f : 1f;
-        /*else*/ moveDir *= Random.value < 0.5f ? -1f : 1f;
+        if(Mathf.Abs(diff) < avoidanceSensitivity)
+        {
+            moveDir = myY < 0 ? 1f : -1f;
+            avoiding = true;
+            StartCoroutine(StopAvoiding());
+        }
+        else moveDir *= Random.value < 0.5f ? -1f : 1f;
+    }
+
+    private IEnumerator StopAvoiding()
+    {
+        yield return avoidingTime;
+        avoiding = false;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -47,7 +62,7 @@ public class BossController : MonoBehaviour
         playerCon.pushed = true;
         col.attachedRigidbody.linearVelocity = new(pushForce, 0f);
         World.Lives.LoseLife();
-        World.BossBar.Damage(10f);
+        World.BossBar.HitBoss(10f);
         StartCoroutine(PushPlayerBack(playerCon));
     }
 
@@ -60,6 +75,7 @@ public class BossController : MonoBehaviour
     public void SwitchPhase(bool third)
     {
         LogUtil.Log($"Switching to {(third ? "third" : "second")} phase");
+        phase = third ? 3 : 2;
         moveSpeed = third ? thirdPhaseMS : secondPhaseMS;
     }
 }
