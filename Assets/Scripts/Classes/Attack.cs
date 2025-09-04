@@ -12,7 +12,7 @@ public class Attack
     private const int minProj = 3, maxProj = 6; //max is exclusive only here
     private const int angleModMin = 5, angleModMax = 45; //Tracking: 6, 30; WallLaser: 9, 45
     public float minSpeed = 1.5f, maxSpeed = 2.5f;
-    private const float minProjTime = .08f, maxProjTime = .2f;
+    private const float minProjTime = .1f, maxProjTime = .3f;
     private const float minAtkTime = .5f, maxAtkTime = 1.5f;
 
     private const float phase2Mod = 1.75f, phase3Mod = 2.25f;

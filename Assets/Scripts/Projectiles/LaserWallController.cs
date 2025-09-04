@@ -13,7 +13,7 @@ public class LaserWallController : AbstractProjectile
         var direction = Quaternion.AngleAxis(atk.angleMod, Vector3.forward) * Dir;
         SetAbstract(atk);
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
-        StartCoroutine(Activate(atk.speed));
+        StartCoroutine(Activate(atk.speed / 2f));
     }
 
     private IEnumerator Activate(float speed)
