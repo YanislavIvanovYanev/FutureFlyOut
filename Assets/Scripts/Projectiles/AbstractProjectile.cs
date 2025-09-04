@@ -4,14 +4,14 @@ public abstract class AbstractProjectile : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rb;
 
-    protected const float maxHp = 1f;
+    protected const float maxHp = 2f, maxLaserWallHp = 10f;
     protected float hp;
 
     protected Vector2 Dir => (World.Player.transform.position - World.Boss.transform.position).normalized;
 
     protected void SetAbstract(Attack atk)
     {
-        hp = maxHp * (int)atk.type;
+        hp = (int)atk.type * maxHp;
     }
 
     public void DamageProj(float dmg)

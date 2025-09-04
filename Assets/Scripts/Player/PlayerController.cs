@@ -11,10 +11,10 @@ public class PlayerController : MonoBehaviour
     private bool boosting, canShoot = true, starting = true;
     private float moveSpeed = movePower;
     private const int baseDamage = 1;
-    private const float movePower = 3.3f, boostPower = 1.5f, turnSpeed = 4.5f, turnStopSpeed = turnSpeed * 1.5f, xMult = 1.5f, range = 200f;
+    private const float movePower = 2.75f, boostPower = 1.5f, turnSpeed = 4.5f, turnStopSpeed = turnSpeed * 1.5f, xMult = 1.5f, range = 200f;
     private Vector2 smoothedDir = Vector2.zero;
     
-    private static readonly WaitForSeconds laserDuration = new(.1f), stopStartingDelay = new(.2f);
+    private static readonly WaitForSeconds laserDuration = new(.2f), stopStartingDelay = new(.2f);
 
     private Vector2 MoveI => World.Input.move.Normalized;
     public Vector2 ShootDir => (Camera.main.ScreenToWorldPoint(Input.mousePosition) - laserRenderer.transform.position).normalized;

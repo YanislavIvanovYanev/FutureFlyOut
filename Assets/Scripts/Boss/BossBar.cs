@@ -42,7 +42,7 @@ public class BossBar : MonoBehaviour
         VirtualDamage(amount);
         World.Score.Add(amount * scoreMultOnDamage);
         UpdateNumber();
-        if(hp <= 0f) SceneManager.LoadScene("Victory");
+        if(hp <= 0f) World.Pause.Won();
         else if(World.Boss.phase == 2 && hp <= thirdPhaseStart) World.Boss.SwitchPhase(true);
         else if(World.Boss.phase == 1 && hp <= secondPhaseStart) World.Boss.SwitchPhase(false);
     }    

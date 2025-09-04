@@ -9,6 +9,7 @@ public class World : MonoBehaviour
     [SerializeField] private BossBar bossBar;
     [SerializeField] private BossAttacks bossAttacks;
     [SerializeField] private ScoreController score;
+    [SerializeField] private GameOverMenu pause;
 
     public static World inst;
     public static InputManager Input => inst.input;
@@ -18,6 +19,7 @@ public class World : MonoBehaviour
     public static BossBar BossBar => inst.bossBar;
     public static BossAttacks BossAttacks => inst.bossAttacks;
     public static ScoreController Score => inst.score;
+    public static GameOverMenu Pause => inst.pause;
 
     private void Awake() => inst = this;
 }
