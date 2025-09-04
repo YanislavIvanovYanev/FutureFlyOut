@@ -10,6 +10,7 @@ public class LaserWallController : AbstractProjectile
 
     public override void Set(Attack atk)
     {
+        animator.Play("Tracking");
         var direction = Quaternion.AngleAxis(atk.angleMod, Vector3.forward) * Dir;
         SetAbstract(atk);
         transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg);
@@ -20,7 +21,10 @@ public class LaserWallController : AbstractProjectile
     {
         yield return activateDelay;
         col.enabled = true;
-        sRen.color = Color.yellow;
+        sRen.enabled = false;
+        var lastPos = animator.transform.position;
+        animator.transform.localScale = new(1f, 1f);
+        animator.transform.position = lastPos;
         StartCoroutine(Die(speed));
     }
 

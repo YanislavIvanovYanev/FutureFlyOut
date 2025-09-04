@@ -5,7 +5,7 @@ public class BombController : AbstractProjectile
     [SerializeField] private LayerMask mask;
 
     private const int bombDmg = 20, scoreGainOnBoss = 10, scoreGainOnProjectile = 2;
-    private const float speed = 5f, radius = 15f;
+    private const float speed = 5f, radius = 45f;
 
     public override void Set(Attack _ = null) => rb.linearVelocity = World.Player.ShootDir * speed;
 

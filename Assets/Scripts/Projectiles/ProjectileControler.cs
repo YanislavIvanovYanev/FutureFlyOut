@@ -6,5 +6,6 @@ public class ProjectileControler : AbstractProjectile
     {
         SetAbstract(atk);
         rb.linearVelocity = Quaternion.AngleAxis(atk.angleMod, Vector3.forward) * Dir * atk.speed;
+        animator.Play("Projectile");
     }
 }

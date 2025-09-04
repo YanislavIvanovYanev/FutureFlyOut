@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private SpriteRenderer sRen;
     [SerializeField] private Rigidbody2D rb;
   
-
     [HideInInspector] public bool pushed;
     [HideInInspector] public int invincibility;
     private bool boosting, canShoot = true, starting = true;

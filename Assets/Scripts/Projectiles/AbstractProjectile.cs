@@ -3,11 +3,12 @@ using UnityEngine;
 public abstract class AbstractProjectile : MonoBehaviour
 {
     [SerializeField] protected Rigidbody2D rb;
+    [SerializeField] protected Animator animator;
 
     protected const float maxHp = 2f, maxLaserWallHp = 10f;
     protected float hp;
 
-    protected Vector2 Dir => (World.Player.transform.position - World.Boss.transform.position).normalized;
+    protected Vector2 Dir => (World.Player.laserRenderer.transform.position - World.Boss.transform.position).normalized;
 
     protected void SetAbstract(Attack atk)
     {

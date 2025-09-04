@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 8b48e74b32b82a041a08eb11883fc9b4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6665283781835957357
+    second: Bauss_blen_0
+  - first:
+      213: -742374392234689910
+    second: Bauss_blen_1
+  - first:
+      213: 4710371162981516673
+    second: Bauss_blen_2
+  - first:
+      213: -2003795012926800214
+    second: Bauss_blen_3
+  - first:
+      213: -1879658888827637759
+    second: Bauss_blen_4
+  - first:
+      213: -416567399465559389
+    second: Bauss_blen_5
+  - first:
+      213: -6070668330748962447
+    second: Bauss_blen_6
+  - first:
+      213: 3765786872844258369
+    second: Bauss_blen_7
+  - first:
+      213: 1746499899641702388
+    second: Bauss_blen_8
+  - first:
+      213: -6718633840910995213
+    second: Bauss_blen_9
+  - first:
+      213: 74381594672246190
+    second: Bauss_blen_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bauss_blen_0
+      rect:
+        serializedVersion: 2
+        x: 747
+        y: 681
+        width: 426
+        height: 314
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 39bde70f6b72083a0800000000000000
+      internalID: -6665283781835957357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_1
+      rect:
+        serializedVersion: 2
+        x: 790
+        y: 628
+        width: 148
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8a318c6c6e82b5f0800000000000000
+      internalID: -742374392234689910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_2
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 631
+        width: 150
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 185c1c9bd999e5140800000000000000
+      internalID: 4710371162981516673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_3
+      rect:
+        serializedVersion: 2
+        x: 809
+        y: 566
+        width: 107
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aae7cc36d071134e0800000000000000
+      internalID: -2003795012926800214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_4
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 595
+        width: 64
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 100f580133c1ae5e0800000000000000
+      internalID: -1879658888827637759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_5
+      rect:
+        serializedVersion: 2
+        x: 1006
+        y: 566
+        width: 107
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3aad8d1482e083af0800000000000000
+      internalID: -416567399465559389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_6
+      rect:
+        serializedVersion: 2
+        x: 774
+        y: 417
+        width: 73
+        height: 162
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1799e742157a0cba0800000000000000
+      internalID: -6070668330748962447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_7
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 475
+        width: 74
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14c06b77533c24430800000000000000
+      internalID: 3765786872844258369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_8
+      rect:
+        serializedVersion: 2
+        x: 1072
+        y: 476
+        width: 62
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f72666c760dc3810800000000000000
+      internalID: 1746499899641702388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_9
+      rect:
+        serializedVersion: 2
+        x: 1112
+        y: 417
+        width: 42
+        height: 67
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f0f4985e1e92c2a0800000000000000
+      internalID: -6718633840910995213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bauss_blen_10
+      rect:
+        serializedVersion: 2
+        x: 733
+        y: 144
+        width: 439
+        height: 324
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ead24409aa1480100800000000000000
+      internalID: 74381594672246190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bauss_blen_0: -6665283781835957357
+      Bauss_blen_1: -742374392234689910
+      Bauss_blen_10: 74381594672246190
+      Bauss_blen_2: 4710371162981516673
+      Bauss_blen_3: -2003795012926800214
+      Bauss_blen_4: -1879658888827637759
+      Bauss_blen_5: -416567399465559389
+      Bauss_blen_6: -6070668330748962447
+      Bauss_blen_7: 3765786872844258369
+      Bauss_blen_8: 1746499899641702388
+      Bauss_blen_9: -6718633840910995213
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
