@@ -741,8 +741,12 @@ MonoBehaviour:
   laserTargetLayers:
     serializedVersion: 2
     m_Bits: 768
+  invincibilityColor: {r: 1, g: 1, b: 1, a: 0.5019608}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  sRen: {fileID: 1931536279}
   rb: {fileID: 444726259}
   pushed: 0
+  invincibility: 0
 --- !u!50 &444726259
 Rigidbody2D:
   serializedVersion: 5
