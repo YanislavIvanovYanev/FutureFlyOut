@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
     public LineRenderer laserRenderer;
     [SerializeField] private LayerMask laserTargetLayers;
     [SerializeField] private Rigidbody2D rb;
+  
 
     [HideInInspector] public bool pushed;
     private bool boosting, canShoot = true, starting = true;
@@ -89,11 +90,13 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator DrawLaser(Vector2 start, Vector2 end)
     {
+
         UpdateLaser(start, end);
         canShoot = false;
         yield return laserDuration;
         laserRenderer.enabled = false;
         canShoot = true;
+
     }
 
     private void UpdateLaser(Vector2 start, Vector2 end)
