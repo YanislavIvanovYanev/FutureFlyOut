@@ -6,8 +6,11 @@ public class LivesController : MonoBehaviour
 {
     [SerializeField] private List<HeartController> hearts;
 
+    private const int scoreLossOnHit = -10; //seconds of manually damaging the boss
+
     public void LoseLife()
     {
+        World.Score.Add(BossBar.scoreMultOnDamage * scoreLossOnHit);
         for(int i = hearts.Count - 1; i >= 0; i--)
             if(hearts[i].isFull)
             {

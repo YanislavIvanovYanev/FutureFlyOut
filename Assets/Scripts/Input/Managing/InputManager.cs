@@ -5,7 +5,7 @@ public class InputManager : MonoBehaviour
     public System.Action OnDisableInput = () => {}, OnUpdate = () => {};
     public PlayerInput inputActions;
 
-    [HideInInspector] public floatInput shoot, boost, heal;
+    [HideInInspector] public floatInput shoot, boost, heal, bomb;
     [HideInInspector] public VectorInput move;
 
     private void Awake() => inputActions = new();
@@ -15,6 +15,7 @@ public class InputManager : MonoBehaviour
         shoot = new(inputActions.Player.Shoot);
         boost = new(inputActions.Player.Boost);
         heal = new(inputActions.Player.Heal);
+        bomb = new(inputActions.Player.Bomb);
         move = new(inputActions.Player.Move);
     }
     private void OnDisable() => OnDisableInput();

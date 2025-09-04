@@ -7,6 +7,7 @@ public class PotionController : MonoBehaviour
     [SerializeField] private Image image;
 
     private int charges = 1;
+    private const int scoreLossOnPotion = -30; //seconds of manually damaging the boss
 
     private void Start() => World.Input.heal.OnDown += Heal;
 
@@ -17,7 +18,6 @@ public class PotionController : MonoBehaviour
         World.Lives.RegainAllLives();
         image.sprite = emptyPotion;
         charges--;
+        World.Score.Add(BossBar.scoreMultOnDamage * scoreLossOnPotion);
     }
-
-
 }
