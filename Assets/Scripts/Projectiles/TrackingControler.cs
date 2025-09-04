@@ -12,6 +12,7 @@ public class TrackingControler : AbstractProjectile
     {
         atk = _atk;
         SetAbstract(atk);
+        hp = maxHp;
         rb.linearVelocity = Quaternion.AngleAxis(atk.angleMod, Vector3.forward) * Dir * atk.speed;
         maxAngularSpeed = maxAngularSpeed = atk.maxSpeed * 2 / 3;
     }

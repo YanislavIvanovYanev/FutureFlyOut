@@ -10,6 +10,9 @@ public class LivesController : MonoBehaviour
 
     public void LoseLife()
     {
+        if(World.Player.invincibility > 0)
+            return;
+        World.Player.BecomeInvincible();
         World.Score.Add(BossBar.scoreMultOnDamage * scoreLossOnHit);
         for(int i = hearts.Count - 1; i >= 0; i--)
             if(hearts[i].isFull)

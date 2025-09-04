@@ -5,17 +5,20 @@ public class PlayerController : MonoBehaviour
 {
     public LineRenderer laserRenderer;
     [SerializeField] private LayerMask laserTargetLayers;
+    [SerializeField] private Color invincibilityColor, normalColor;
+    [SerializeField] private SpriteRenderer sRen;
     [SerializeField] private Rigidbody2D rb;
   
 
     [HideInInspector] public bool pushed;
+    [HideInInspector] public int invincibility;
     private bool boosting, canShoot = true, starting = true;
     private float moveSpeed = movePower;
     private const int baseDamage = 1;
-    private const float movePower = 3.3f, boostPower = 1.5f, turnSpeed = 4.5f, turnStopSpeed = turnSpeed * 1.5f, xMult = 1.5f, range = 200f;
+    private const float movePower = 3f, boostPower = 1.5f, turnSpeed = 4.5f, turnStopSpeed = turnSpeed * 1.5f, xMult = 1.5f, range = 200f;
     private Vector2 smoothedDir = Vector2.zero;
     
-    private static readonly WaitForSeconds laserDuration = new(.1f), stopStartingDelay = new(.2f);
+    private static readonly WaitForSeconds laserDuration = new(.15f), stopStartingDelay = new(.2f), invincibilityDuration = new(2f);
 
     private Vector2 MoveI => World.Input.move.Normalized;
     public Vector2 ShootDir => (Camera.main.ScreenToWorldPoint(Input.mousePosition) - laserRenderer.transform.position).normalized;
@@ -113,4 +116,17 @@ public class PlayerController : MonoBehaviour
         moveSpeed = boosting ? movePower * boostPower : movePower;
     }
 #endregion
+
+    public void BecomeInvincible()
+    {
+        invincibility++;
+        sRen.color = invincibilityColor;
+        StartCoroutine(StopInvincibility());
+    }
+    private IEnumerator StopInvincibility()
+    {
+        yield return invincibilityDuration;
+        invincibility--;
+        sRen.color = normalColor;
+    }
 }

@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameOverMenu : MonoBehaviour
 {
-        public GameObject pauseMenuUI;
+    public GameObject pauseMenuUI, won, resume;
     private bool isPaused = false;
 
     void Update()
@@ -24,6 +24,13 @@ public class GameOverMenu : MonoBehaviour
         isPaused = false;
     }
 
+    public void Won()
+    {
+        resume.SetActive(false);
+        won.SetActive(true);
+        Pause();
+    }
+
     public void Pause()
     {
         pauseMenuUI.SetActive(true);
@@ -32,7 +39,7 @@ public class GameOverMenu : MonoBehaviour
     }
     public void RestartGame()
     {
-         Time.timeScale = 1f; 
+        Time.timeScale = 1f; 
         SceneManager.LoadScene("Battle");
     }
 
@@ -40,9 +47,9 @@ public class GameOverMenu : MonoBehaviour
     {
         Application.Quit();
     }
-        public void QuitToMainMenu()
+    public void QuitToMainMenu()
     {
-         Time.timeScale = 1f; 
+        Time.timeScale = 1f; 
         SceneManager.LoadScene("MainMenu");
     }
 }

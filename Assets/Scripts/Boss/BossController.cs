@@ -7,8 +7,8 @@ public class BossController : MonoBehaviour
 
     [HideInInspector] public int phase = 1;
     private bool avoiding;
-    private float moveSpeed = firstPhaseMS, moveDir = 1f, slow, slowOnHit = .2f, lastSlowOnHit;
-    private const float avoidanceSensitivity = 1f, borderMax = 4f, borderMin = 3f, movePower = 2.5f, turnSpeed = 6f,
+    private float moveSpeed = firstPhaseMS, moveDir = 1f, slow, slowOnHit = .15f, lastSlowOnHit;
+    private const float avoidanceSensitivity = 1f, borderMax = 3.5f, borderMin = 2.5f, movePower = 2.5f, turnSpeed = 6f,
      pushTime = .1f, pushForce = -15f, firstPhaseMS = 1f, secondPhaseMS = 2.25f, thirdPhaseMS = 3f,
      initialAttackDelay = 1f;
     private Vector2 smoothedDir = Vector2.zero;
