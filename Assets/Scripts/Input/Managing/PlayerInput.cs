@@ -111,15 +111,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""852140f2-7766-474d-8707-702459ba45f3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": ""Hold"",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""Previous"",
                     ""type"": ""Button"",
                     ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
@@ -150,6 +141,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""name"": ""Heal"",
                     ""type"": ""Button"",
                     ""id"": ""a8518f29-0292-4ee8-97c0-5d455a80d7a2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Bomb"",
+                    ""type"": ""Button"",
+                    ""id"": ""6f16700b-9416-472a-9603-adaafad798aa"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -390,34 +390,23 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1c04ea5f-b012-41d1-a6f7-02e963b52893"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""b3f66d0b-7751-423f-908b-a11c5bd95930"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Gamepad"",
-                    ""action"": ""Interact"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""880359cb-5a8d-46d8-adae-462a7167ad74"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Heal"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""536909ea-2af6-44df-bb5a-d1d4f7dc5b59"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Bomb"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1007,11 +996,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Shoot = m_Player.FindAction("Shoot", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
         m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
         m_Player_Boost = m_Player.FindAction("Boost", throwIfNotFound: true);
         m_Player_Heal = m_Player.FindAction("Heal", throwIfNotFound: true);
+        m_Player_Bomb = m_Player.FindAction("Bomb", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1107,11 +1096,11 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Shoot;
-    private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Previous;
     private readonly InputAction m_Player_Next;
     private readonly InputAction m_Player_Boost;
     private readonly InputAction m_Player_Heal;
+    private readonly InputAction m_Player_Bomb;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1132,10 +1121,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Shoot => m_Wrapper.m_Player_Shoot;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Interact".
-        /// </summary>
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
-        /// <summary>
         /// Provides access to the underlying input action "Player/Previous".
         /// </summary>
         public InputAction @Previous => m_Wrapper.m_Player_Previous;
@@ -1151,6 +1136,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Heal".
         /// </summary>
         public InputAction @Heal => m_Wrapper.m_Player_Heal;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/Bomb".
+        /// </summary>
+        public InputAction @Bomb => m_Wrapper.m_Player_Bomb;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1183,9 +1172,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
             @Previous.started += instance.OnPrevious;
             @Previous.performed += instance.OnPrevious;
             @Previous.canceled += instance.OnPrevious;
@@ -1198,6 +1184,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Heal.started += instance.OnHeal;
             @Heal.performed += instance.OnHeal;
             @Heal.canceled += instance.OnHeal;
+            @Bomb.started += instance.OnBomb;
+            @Bomb.performed += instance.OnBomb;
+            @Bomb.canceled += instance.OnBomb;
         }
 
         /// <summary>
@@ -1215,9 +1204,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
             @Shoot.canceled -= instance.OnShoot;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
             @Previous.started -= instance.OnPrevious;
             @Previous.performed -= instance.OnPrevious;
             @Previous.canceled -= instance.OnPrevious;
@@ -1230,6 +1216,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Heal.started -= instance.OnHeal;
             @Heal.performed -= instance.OnHeal;
             @Heal.canceled -= instance.OnHeal;
+            @Bomb.started -= instance.OnBomb;
+            @Bomb.performed -= instance.OnBomb;
+            @Bomb.canceled -= instance.OnBomb;
         }
 
         /// <summary>
@@ -1545,13 +1534,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnShoot(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Interact" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInteract(InputAction.CallbackContext context);
-        /// <summary>
         /// Method invoked when associated input action "Previous" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
@@ -1579,6 +1561,13 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnHeal(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Bomb" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnBomb(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

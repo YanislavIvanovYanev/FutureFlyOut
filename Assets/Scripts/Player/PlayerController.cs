@@ -3,29 +3,41 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public LineRenderer laserRenderer;
     [SerializeField] private LayerMask laserTargetLayers;
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private LineRenderer laserRenderer;
 
     [HideInInspector] public bool pushed;
-    private bool boosting, canShoot = true;
+    private bool boosting, canShoot = true, starting = true;
     private float moveSpeed = movePower;
-    private const float movePower = 3.3f, boostPower = 1.5f, turnSpeed = 4.5f, turnStopSpeed = turnSpeed * 1.5f, xMult = 1.5f,
-     range = 200f, baseDamage = 1f;
+    private const int baseDamage = 1;
+    private const float movePower = 3.3f, boostPower = 1.5f, turnSpeed = 4.5f, turnStopSpeed = turnSpeed * 1.5f, xMult = 1.5f, range = 200f;
     private Vector2 smoothedDir = Vector2.zero;
     
-    private static readonly WaitForSeconds laserDuration = new(.08f);
+    private static readonly WaitForSeconds laserDuration = new(.1f), stopStartingDelay = new(.2f);
 
     private Vector2 MoveI => World.Input.move.Normalized;
+    public Vector2 ShootDir => (Camera.main.ScreenToWorldPoint(Input.mousePosition) - laserRenderer.transform.position).normalized;
 
 #region MonoBehaviour
     private void Awake() => transform.position = new(-8f, 0f);
 
     private void Start()
     {
-        World.Input.shoot.OnDown += Shoot;
         World.Input.boost.OnDown += Boost;
+        StartGame(); //move to main menu start button
+    }
+
+    public void StartGame()
+    {
         World.Boss.StartBoss();
+        StartCoroutine(StopStarting());
+    }
+
+    private IEnumerator StopStarting()
+    {
+        yield return stopStartingDelay;
+        starting = false;
     }
 
     private void FixedUpdate()
@@ -41,7 +53,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        if(starting)
+            return;
         if(!canShoot) MakeLaser(true);
+        else if(World.Input.shoot.Value) Shoot();
         // animator.SetFloat("MoveX", moveX);
         // animator.SetFloat("MoveY", World.Input.move.Y);
         // animator.SetBool("Boost", boost);
@@ -49,22 +64,20 @@ public class PlayerController : MonoBehaviour
 #endregion
 
 #region Actions
-    private void Shoot(bool value)
+    private void Shoot()
     {
-        if(!value || !canShoot)
-            return;
-        
         var hit = MakeLaser(false);
 
         if(hit.collider == null)
             return;
         if(hit.collider.TryGetComponent(out BossController bossCon)) bossCon.HitBoss(baseDamage);
+        else if(hit.collider.TryGetComponent(out AbstractProjectile projCon)) projCon.DamageProj(baseDamage);
     }
 
     private RaycastHit2D MakeLaser(bool onlyUpdate)
     {
         Vector2 origin = laserRenderer.transform.position;
-        Vector2 direction = laserRenderer.transform.right;
+        Vector2 direction = ShootDir;
         RaycastHit2D hit = Physics2D.Raycast(origin, direction, range, laserTargetLayers);
         Vector2 endPoint = hit.collider != null ? hit.point : origin + direction.normalized * range;
 
