@@ -30,7 +30,7 @@ public class BossBar : MonoBehaviour
     {
         Damage(amount);
         UpdateNumber();
-        if(hp <= 0f) SceneManager.LoadScene("Battle");
+        if(hp <= 0f) SceneManager.LoadScene("Victory");
         else if(World.Boss.phase == 2 && hp <= thirdPhaseStart) World.Boss.SwitchPhase(true);
         else if(World.Boss.phase == 1 && hp <= secondPhaseStart) World.Boss.SwitchPhase(false);
     }
